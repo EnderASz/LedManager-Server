@@ -1,0 +1,18 @@
+<Configuration status="WARN" strict="true">
+    <Appenders>
+        <Appender type="Console" name="Console.Base" target="SYSTEM_OUT">
+            <Layout type="PatternLayout" disableAnsi="false">
+                <Pattern>
+                    %highlight{[%level]\t[T:%d{ABSOLUTE_MICROS}] [TH:%threadName] [CLS:%class{-4}:%line] %msg%n}{
+                        FATAL=blink bold red, ERROR=bold red, WARN=red, INFO=blue, DEBUG=yellow, TRACE=magenta
+                    }
+                </Pattern>
+            </Layout>
+        </Appender>
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="Console.Base"/>
+        </Root>
+    </Loggers>
+</Configuration>
