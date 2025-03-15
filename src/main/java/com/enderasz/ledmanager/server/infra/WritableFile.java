@@ -7,12 +7,13 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
+import java.nio.file.Path;
 
 public class WritableFile extends File {
     static private final Logger logger = LogManager.getLogger(FileStorage.class);
 
-    public WritableFile(FileLock lock, FileChannel channel) throws IOException {
-        super(lock, channel);
+    public WritableFile(FileLock lock, FileChannel channel, Path path) throws IOException {
+        super(lock, channel, path);
         channel.truncate(0);
     }
 

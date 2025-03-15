@@ -74,7 +74,7 @@ public class ConfigSave implements Consumer<ClientManager> {
 
     private static void writeLightsToFile(Config config, WritableFile file) throws IOException {
         Map<Integer, LightConfig> lights = config.getLightConfigMap();
-        FileChannel fc = file.getFileChannel();
+        FileChannel fc = file.getChannel();
         fc.write(ByteBuffer.wrap((config.getName() + "\n").getBytes()));
         for (Map.Entry<Integer, LightConfig> entry : lights.entrySet()) {
             StringBuilder sb = new StringBuilder();

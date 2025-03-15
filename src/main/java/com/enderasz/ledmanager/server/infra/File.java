@@ -19,7 +19,7 @@ public class File implements AutoCloseable {
         return path;
     }
 
-    protected FileChannel getChannel() {
+    public FileChannel getChannel() {
         return channel;
     }
 

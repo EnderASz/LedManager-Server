@@ -32,7 +32,7 @@ public class FileStorage {
         FileChannel fc = FileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.CREATE);
         FileLock l = fc.lock(0L, Long.MAX_VALUE, false);
 
-        WritableFile file = new WritableFile(l, fc);
+        WritableFile file = new WritableFile(l, fc, path);
 
         logger.info("Opened writable file: " + path);
 
@@ -42,6 +42,11 @@ public class FileStorage {
     static protected ReadableFile openReadableFile(Path path) throws IOException {
         FileChannel fc = FileChannel.open(path, StandardOpenOption.READ);
         FileLock l = fc.lock(0L, Long.MAX_VALUE, true);
-        return new ReadableFile(l, fc);
+
+        ReadableFile file = new ReadableFile(l, fc, path);
+
+        logger.info("Opened writable file: " + path);
+
+        return file;
     }
 }
